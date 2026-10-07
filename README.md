@@ -1,28 +1,44 @@
 # Kestra
 
-**Transparent, non-custodial savings on Stellar.**
+**A complete savings protocol on Stellar — personal and shared, all enforced on-chain.**
 
-Kestra is a savings protocol built on **Stellar using Soroban smart contracts**. Save alone or in a group, in USDC, with every deposit, lock, and payout enforced on-chain — not by a company, but by code you can read and verify.
+Kestra is a non-custodial savings protocol built on **Stellar using Soroban smart contracts**. It is **not just a rotating savings group (ROSCA)** — rotating circles are only one of several ways to save. Kestra gives individuals a place to build personal savings *and* gives groups a shared, rules-enforced place to save together, all in USDC, with every deposit, lock, approval, and payout enforced by code you can read and verify.
 
-It brings together solo savings vaults (flexible / locked / goal) and transparent rotating group savings circles (ROSCA) under one protocol, with a clean web experience on top.
+Think of it as a savings "operating system": one protocol, many savings shapes — from a solo emergency buffer, to a locked long-term goal, to a multi-signature pot a group of friends controls together.
 
 ---
 
 ## Why Kestra
 
-- **Non-custodial by design** — funds move only under rules written in a Soroban contract. No organizer or admin can touch your principal.
+- **Personal *and* group savings** — not a single mechanism. Save on your own, or pool funds with people you trust under shared rules.
+- **Non-custodial by design** — funds move only under rules written in a Soroban contract. No organizer, admin, or company can touch the principal.
 - **Dollar-denominated** — save in USDC as a hedge against local-currency depreciation; cash in/out in local currency via Stellar anchors.
-- **Passwordless onboarding** — passkey smart wallets and sponsored fees mean your first deposit needs no seed phrase and no XLM.
+- **Passwordless onboarding** — passkey smart wallets and sponsored fees mean a first deposit needs no seed phrase and no XLM.
 - **Verifiable** — the savings logic is a few small, auditable contracts, not an opaque backend.
 
-## Savings products
+---
 
-| Product     | Rule                                                                 |
-| ----------- | -------------------------------------------------------------------- |
-| Flexible    | Deposit and withdraw any time.                                       |
-| Locked      | Funds locked until a chosen date; the contract enforces the lock.    |
-| Goal        | Set a target, track progress on-chain.                               |
-| Circles     | Rotating group savings — contributions each round, automatic payouts.|
+## Ways to save
+
+Kestra deliberately supports a spectrum of savings styles so no one assumes it's "just a circle."
+
+### Personal savings
+
+| Product     | Rule                                                              |
+| ----------- | ----------------------------------------------------------------- |
+| Flexible    | Deposit and withdraw any time — a fully liquid buffer.            |
+| Locked      | Funds locked until a chosen date; the contract enforces the lock. |
+| Goal        | Set a target amount and track progress on-chain.                  |
+
+### Group savings
+
+| Product              | Rule                                                                                                     |
+| -------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Shared Vaults** 🔐 | A **multi-signature** pot for a shared goal. Any member can contribute, but withdrawals require **M-of-N** member approvals — ideal for a **vacation fund, rent pool, or household savings** where no single person should be able to move the money alone. |
+| Split Pools          | A group saves into one pool; the balance is split back to members by their agreed shares, settled on-chain. |
+| Circles (ROSCA)      | Rotating group savings — members contribute each round and payouts rotate automatically and transparently. |
+
+> **Shared Vaults are the group-savings centerpiece.** Imagine four friends saving for a trip: everyone pays into the vault whenever they can, and spending the money requires, say, 3 of the 4 to sign off. The approval threshold is set on-chain at creation and can't be quietly changed by one person.
 
 ---
 
@@ -71,6 +87,8 @@ The `vault` contract exposes two core functions:
 - `withdraw(to, amount)` — withdraw from the caller's balance (reverts if insufficient).
 
 Both require the caller's authorization via Soroban's `require_auth`.
+
+> **Roadmap:** the multi-signature **Shared Vault** contract (contribute + propose + M-of-N approve) is the next contract to land alongside `vault`.
 
 ### Deploy to testnet
 
