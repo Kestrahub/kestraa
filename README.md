@@ -6,6 +6,8 @@ Kestra is a non-custodial savings protocol built on **Stellar using Soroban smar
 
 Think of it as a savings "operating system": one protocol, many savings shapes — from a solo emergency buffer, to a locked long-term goal, to a multi-signature pot a group of friends controls together.
 
+**You don't need a group to use Kestra.** A single person can open and save into any vault entirely on their own — a Shared Vault with just one member is simply a personal savings account. Save alone, then invite others later, or never. Group features are always optional, never required.
+
 ---
 
 ## Why Kestra
@@ -23,6 +25,8 @@ Think of it as a savings "operating system": one protocol, many savings shapes �
 Kestra deliberately supports a spectrum of savings styles so no one assumes it's "just a circle."
 
 ### Personal savings
+
+Every product below works for a single person — no group, no co-signers, no invites required.
 
 | Product     | Rule                                                              |
 | ----------- | ----------------------------------------------------------------- |
