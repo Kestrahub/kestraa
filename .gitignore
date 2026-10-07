@@ -1,0 +1,16 @@
+# Node
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+.env
+.env.local
+
+# Rust / Soroban
+contracts/target/
+**/*.rs.bk
+
+# Misc
+.DS_Store
+*.log
